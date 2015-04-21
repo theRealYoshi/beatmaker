@@ -29,6 +29,9 @@ var TONES = {
     },
     release: function(tone){
       this.notes[tone].stop();
+    },
+    onChange: function(){
     }
   };
+  KeyStore.addChangeListener(
 })(this);

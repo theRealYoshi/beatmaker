@@ -32,13 +32,4 @@
       this.gainNode.gain.value = 0;
     },
   }
-
-  // var root = this;
-  // var root = 440;
-  // var defaultForm = "sine";
-  // var defaultGain = 0.3;
-  // var tones = {
-  //   85: { "form": "sine", "gain": 0.3 },
-  //   73: { "form": "square", "gain": 0.05 }
-  // }
 })(this);
