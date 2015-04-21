@@ -11,18 +11,10 @@ var TONES = {
 
 (function(root){
   var notes = {};
-  // var createNotes = function(){
-    for(var toneName in TONES){
-      var tone = TONES[toneName];
-      notes[tone.name] = new Note(tone.freq);
-    }
-    // return notes;
-  // };
-
-  // var Organ = root.Organ = function(){
-  //   this.notes = createNotes();
-  // };
-
+  for(var toneName in TONES){
+    var tone = TONES[toneName];
+    notes[tone.name] = new Note(tone.freq);
+  }
   var Organ = root.Organ = {
     play: function(tone){
       notes[tone].start();
