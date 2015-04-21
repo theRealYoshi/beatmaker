@@ -3,7 +3,7 @@
   var CHANGE_EVENT = "change";
   root.KeyStore = $.extend({}, EventEmitter.prototype, {
     all: function(){
-      return _notes.slice(0);
+      return _keys.slice(0);
     },
     _removeKey: function(key){
       var idx = _keys.indexOf(key);

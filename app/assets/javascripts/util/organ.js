@@ -10,28 +10,39 @@ var TONES = {
 };
 
 (function(root){
-  var createNotes = function(){
-    var notes = {};
+  var notes = {};
+  // var createNotes = function(){
     for(var toneName in TONES){
       var tone = TONES[toneName];
       notes[tone.name] = new Note(tone.freq);
     }
-    return notes;
-  };
+    // return notes;
+  // };
 
-  var Organ = root.Organ = function(){
-    this.notes = createNotes();
-  };
+  // var Organ = root.Organ = function(){
+  //   this.notes = createNotes();
+  // };
 
-  Organ.prototype = {
+  var Organ = root.Organ = {
     play: function(tone){
-      this.notes[tone].start();
+      notes[tone].start();
     },
     release: function(tone){
-      this.notes[tone].stop();
+      notes[tone].stop();
     },
     onChange: function(){
+      var currentNotes = KeyStore.all();
+      for(var noteName in notes){
+        var note = notes[noteName];
+        if(currentNotes.indexOf(noteName) !== -1){
+          console.log("+ " + noteName);
+          note.start();
+        } else {
+          console.log("- " + noteName);
+          note.stop();
+        }
+      }
     }
   };
-  KeyStore.addChangeListener(
+  KeyStore.addChangeListener(Organ.onChange.bind(Organ));
 })(this);
