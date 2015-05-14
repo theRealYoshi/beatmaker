@@ -11,6 +11,11 @@ var Recorder = React.createClass({
       this.state.track.startRecording();
     }
   },
+  saveTrack: function(e){
+    if(!this.state.track.blank()){
+      var name = prompt("what would you like to name the track?");
+    }
+  },
   playClick: function(e){
     if(!this.state.track.blank()){
       this.state.track.play();
@@ -33,7 +38,7 @@ var Recorder = React.createClass({
     if(!this.state.track.blank() && !this.state.recording){
       recordingMessage = "record over";
       trackSavingElements = (
-        <div className="control">
+        <div onClick={this.saveTrack} className="control">
           save track
         </div>
       );
