@@ -24,6 +24,7 @@ var Organ = React.createClass({
             );
           })
         }
+        <Controls />
       </div>
    );
   }

@@ -19,6 +19,10 @@
         this.emit(CHANGE_EVENT);
       }
     },
+    _groupUpdate: function(keys){
+      _keys = keys.slice();
+      this.emit(CHANGE_EVENT);
+    },
     addChangeListener: function(callback){
       this.on(CHANGE_EVENT, callback);
     },
@@ -32,6 +36,9 @@
           break;
         case OrganConstants.KEY_RELEASED:
           root.KeyStore._removeKey(payload.note);
+          break;
+        case OrganConstants.GROUP_UPDATE:
+          root.KeyStore._groupUpdate(payload.note);
           break;
       }
     })
