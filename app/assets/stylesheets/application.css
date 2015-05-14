@@ -26,3 +26,7 @@
 .note-key.pressed {
   background-color: lightgray;
 }
+
+.play-button.disabled {
+  display: none;
+}

@@ -1,4 +1,4 @@
-var Controls = React.createClass({
+var Recorder = React.createClass({
   getInitialState: function(){
     return { recording: false, track: new Track() };
   },
@@ -12,7 +12,9 @@ var Controls = React.createClass({
     }
   },
   playClick: function(e){
-    this.state.track.play();
+    if(!this.state.track.blank()){
+      this.state.track.play();
+    }
   },
   _keysChanged: function(){
     if (this.state.recording){
@@ -23,13 +25,26 @@ var Controls = React.createClass({
     KeyStore.addChangeListener(this._keysChanged);
   },
   render: function() {
-    var recordingMessage = this.state.recording ? "save" : "start recording";
+    var recordingMessage = this.state.recording ? "stop recording" : "start recording";
+    var hasTrack = this.state.track.blank(),
+        playClass = "play-button" + hasTrack ? "" : " disabled",
+        trackSavingElements = "";
+
+    if(!this.state.track.blank() && !this.state.recording){
+      recordingMessage = "record over";
+      trackSavingElements = (
+        <div className="control">
+          save track
+        </div>
+      );
+    }
     return (
         <div className="controls">
           <div onClick={this.recordClick} className="record-button">
             { recordingMessage }
           </div>
-          <div onClick={this.playClick} className="play-button">
+          { trackSavingElements }
+          <div onClick={this.playClick} className={playClass}>
             play
           </div>
         </div>
