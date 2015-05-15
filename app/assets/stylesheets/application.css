@@ -30,3 +30,25 @@
 .play-button.disabled {
   display: none;
 }
+
+.jukebox {
+  width: 500px;
+}
+
+.keys {
+  clear: both;
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+} 
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}

@@ -13,6 +13,7 @@ var Organ = React.createClass({
     console.log(notes);
     return (
       <div>
+        <div className="keys group">
         {
           Object.keys(TONES).map(function(noteName){
             var pressed = (notes.indexOf(noteName) !== -1);
@@ -24,7 +25,9 @@ var Organ = React.createClass({
             );
           })
         }
+        </div>
         <Recorder />
+        <JukeBox />
       </div>
    );
   }

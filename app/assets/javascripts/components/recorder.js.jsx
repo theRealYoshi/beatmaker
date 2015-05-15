@@ -12,9 +12,14 @@ var Recorder = React.createClass({
     }
   },
   saveTrack: function(e){
-    if(!this.state.track.blank()){
-      var name = prompt("what would you like to name the track?");
-    }
+    // try {
+    this.state.track.set('name', prompt("please enter name"));
+    this.state.track.save();
+    // } catch (e){
+      // debugger
+    // }
+    // if(!this.state.track.blank()){
+    // }
   },
   playClick: function(e){
     if(!this.state.track.blank()){
@@ -45,6 +50,7 @@ var Recorder = React.createClass({
     }
     return (
         <div className="controls">
+          <h3>Recorder</h3>
           <div onClick={this.recordClick} className="record-button">
             { recordingMessage }
           </div>

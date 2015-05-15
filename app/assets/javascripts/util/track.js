@@ -1,28 +1,38 @@
-function Track(){
-  this.notes = [];
+function Track(attrs){
+  var defaults = {
+    name: "",
+    roll: []
+  };
+  this.attributes = $.extend(defaults, attrs || {});
 }
 
 Track.prototype = {
   addNotes: function(notes){
-    this.notes.push({notes: notes, time: this._timeDelta()});
+    var timeSlice = {time: this._timeDelta()};
+    if(notes.length > 0){
+      //there are actually some keys held down
+      timeSlice.notes = notes;
+    }
+    this.attributes.roll.push(timeSlice);
   },
   startRecording: function(){
-    this.notes = [];
+    this.attributes.roll = [];
     this.start = Date.now();
   },
   _timeDelta: function(){
     return Date.now() - this.start;
   },
   completeRecording: function(){
-    this.notes.push({notes: [], time: this._timeDelta()});
+    //add an empty time slice to indicate the end
+    this.addNotes([]);
   },
   blank: function(){
-    return this.notes.length === 0;
+    return this.attributes.roll.length === 0;
   },
   play: function(){
     var currentNote = 0,
         playBackStartTime = Date.now(),
-        roll = this.notes,
+        roll = this.attributes.roll,
         delta;
 
     var id = setInterval(function(){
@@ -32,12 +42,33 @@ Track.prototype = {
         if(delta >= roll[currentNote].time){
           //if we are at a timeslice with a note
           //play it and move to the next one
-          KeyActions.groupUpdate(roll[currentNote].notes);
+
+          //because the notes might not be set, thanks rails!
+          var notes = roll[currentNote].notes;
+          if(typeof notes === "undefined"){
+            notes = [];
+          }
+          KeyActions.groupUpdate(notes);
           currentNote++;
         }
       } else {
         clearInterval(id);
       }
     }, 1);
+  },
+  set: function(attr, val){
+    this.attributes[attr] = val;
+  },
+  get: function(attr){
+    return this.attributes[attr];
+  },
+  save: function(){
+    if (this.blank()) {
+      throw "track can't be blank!";
+    }  else if (this.attributes.name === "") {
+      throw "name can't be blank!";
+    } else {
+      TrackActions.createTrack(this.attributes);
+    }
   }
 };
