@@ -11,13 +11,13 @@ window.NOTE_MAP = {
 
 
 $(function(){
-  var _heldKeys = [];
+  var _heldKeys = [], validKeys = Object.keys(NOTE_MAP);
   $(document).on('keydown', function(e){
-    var code = e.keyCode;
-    if(_heldKeys.indexOf(code) === -1){
+    var code = e.keyCode, 
+        valid = validKeys.indexOf(code.toString()) !== -1;
+    if(_heldKeys.indexOf(code) === -1 && valid){
       _heldKeys.push(code);
       KeyActions.keyPressed(NOTE_MAP[code]);
-      console.log('pressed' + code);
     }
   });
   $(document).on('keyup', function(e){
