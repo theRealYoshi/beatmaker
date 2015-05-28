@@ -9,20 +9,12 @@ var Organ = React.createClass({
     this.setState({notes: KeyStore.all()});
   },
   render: function() {
-    var notes = this.state.notes;
-    console.log(notes);
     return (
       <div>
         <div className="keys group">
         {
           Object.keys(TONES).map(function(noteName){
-            var pressed = (notes.indexOf(noteName) !== -1);
-            return (
-                <NoteKey 
-                  noteName={noteName} 
-                  pressed={pressed} 
-                  key={noteName}/>
-            );
+            return ( <NoteKey noteName={noteName} key={noteName}/>);
           })
         }
         </div>
