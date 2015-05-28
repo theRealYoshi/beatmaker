@@ -1,4 +1,4 @@
-NOTE_MAP = {
+window.NOTE_MAP = {
   65: 'C3',// 'a'
   83: 'D3',// 's'
   68: 'E3',// 'd'
