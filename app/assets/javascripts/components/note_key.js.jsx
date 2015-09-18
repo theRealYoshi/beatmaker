@@ -1,19 +1,19 @@
 var NoteKey = React.createClass({
-  thisKeyPressed: function(){
+  thisKeyPressed: function () {
     var keys = KeyStore.all();
     return keys.indexOf(this.props.noteName) !== -1;
   },
 
-  getInitialState: function(){
+  getInitialState: function () {
     return {pressed: this.thisKeyPressed()};
   },
 
-  componentDidMount: function(){
+  componentDidMount: function () {
     this.note = new Note(TONES[this.props.noteName]);
     KeyStore.addChangeListener(this._onChange);
   },
 
-  _onChange: function(){
+  _onChange: function () {
     var pressed = this.thisKeyPressed();
     if(pressed){
       this.note.start();
@@ -23,7 +23,7 @@ var NoteKey = React.createClass({
     this.setState({pressed: pressed});
   },
 
-  render: function() {
+  render: function () {
     var className = "note-key";
     if(this.state.pressed){
       className += " pressed";

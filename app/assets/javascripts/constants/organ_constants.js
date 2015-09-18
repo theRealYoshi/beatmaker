@@ -1,4 +1,4 @@
-OrganConstants = {
+var OrganConstants = {
   KEY_PRESSED: "KEY_PRESSED",
   KEY_RELEASED: "KEY_RELEASED",
   GROUP_UPDATE: "GROUP_UPDATE",
@@ -7,4 +7,4 @@ OrganConstants = {
   CREATE_TRACK: "CREATE_TRACK",
   ADD_TRACK: "ADD_TRACK",
   RESET_TRACKS: "RESET_TRACKS"
-}
+};

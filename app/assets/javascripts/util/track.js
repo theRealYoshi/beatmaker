@@ -1,4 +1,4 @@
-function Track(attrs){
+function Track(attrs) {
   var defaults = {
     name: "",
     roll: []
@@ -8,40 +8,40 @@ function Track(attrs){
 }
 
 Track.prototype = {
-  addNotes: function(notes){
+  addNotes: function (notes) {
     var timeSlice = {time: this._timeDelta()};
-    if(notes.length > 0){
+    if (notes.length > 0) {
       //there are actually some keys held down
       timeSlice.notes = notes;
     }
     this.attributes.roll.push(timeSlice);
   },
 
-  startRecording: function(){
+  startRecording: function () {
     this.attributes.roll = [];
     this.start = Date.now();
   },
 
-  _timeDelta: function(){
+  _timeDelta: function () {
     return Date.now() - this.start;
   },
 
-  completeRecording: function(){
+  completeRecording: function () {
     //add an empty time slice to indicate the end
     this.addNotes([]);
   },
 
-  blank: function(){
+  blank: function () {
     return this.attributes.roll.length === 0;
   },
 
-  play: function(){
+  play: function () {
     var currentNote = 0,
         playBackStartTime = Date.now(),
         roll = this.attributes.roll,
         delta;
 
-    var id = setInterval(function(){
+    var id = setInterval(function () {
       if (currentNote < roll.length) {
         //if there are still notes to be played
         delta = Date.now() - playBackStartTime;
@@ -63,18 +63,18 @@ Track.prototype = {
     }, 1);
   },
 
-  set: function(attr, val){
+  set: function (attr, val) {
     this.attributes[attr] = val;
   },
 
-  get: function(attr){
+  get: function (attr) {
     return this.attributes[attr];
   },
 
-  save: function(){
+  save: function () {
     if (this.blank()) {
       throw "track can't be blank!";
-    }  else if (this.attributes.name === "") {
+    } else if (this.attributes.name === "") {
       throw "name can't be blank!";
     } else {
       TrackActions.createTrack(this.attributes);

@@ -1,4 +1,4 @@
-window.NOTE_MAP = {
+var NOTE_MAP = {
   65: 'C3',  // 'a'
   83: 'D3',  // 's'
   68: 'E3',  // 'd'
@@ -9,23 +9,23 @@ window.NOTE_MAP = {
   186: 'C4', // ';'
 }
 
-$(function(){
+$(function () {
   var _heldKeys = [],
       validKeys = Object.keys(NOTE_MAP);
 
-  $(document).on('keydown', function(e){
+  $(document).on('keydown', function (e) {
     var code = e.keyCode,
         valid = validKeys.indexOf(code.toString()) !== -1;
-    if(_heldKeys.indexOf(code) === -1 && valid){
+    if (_heldKeys.indexOf(code) === -1 && valid) {
       _heldKeys.push(code);
       KeyActions.keyPressed(NOTE_MAP[code]);
     }
   });
 
-  $(document).on('keyup', function(e){
+  $(document).on('keyup', function (e) {
     var code = e.keyCode,
         idx = _heldKeys.indexOf(code);
-    if(idx !== -1){
+    if (idx !== -1) {
       _heldKeys.splice(idx, 1);
       KeyActions.keyReleased(NOTE_MAP[code]);
     }

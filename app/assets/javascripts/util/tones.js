@@ -1,4 +1,4 @@
-window.TONES = {
+var TONES = {
   C3: 523.25,
   D3: 587.33,
   E3: 659.25,

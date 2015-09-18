@@ -1,5 +1,5 @@
 var ChordKey = React.createClass({
-  render: function() {
+  render: function () {
     return <div />;
   }
 });

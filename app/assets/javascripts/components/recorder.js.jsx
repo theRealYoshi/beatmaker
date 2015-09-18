@@ -1,19 +1,19 @@
 var Recorder = React.createClass({
-  getInitialState: function(){
+  getInitialState: function () {
     return { recording: false, track: new Track() };
   },
 
-  recordClick: function(e){
-    if(this.state.recording){
+  recordClick: function (e) {
+    if (this.state.recording) {
       this.state.track.completeRecording();
-      this.setState({recording: false});
+      this.setState({ recording: false });
     } else {
-      this.setState({recording: true});
+      this.setState({ recording: true });
       this.state.track.startRecording();
     }
   },
 
-  saveTrack: function(e){
+  saveTrack: function (e) {
     // try {
     this.state.track.set('name', prompt("please enter name"));
     this.state.track.save();
@@ -24,29 +24,29 @@ var Recorder = React.createClass({
     // }
   },
 
-  playClick: function(e){
+  playClick: function (e) {
     if(!this.state.track.blank()){
       this.state.track.play();
     }
   },
 
-  _keysChanged: function(){
+  _keysChanged: function () {
     if (this.state.recording){
       this.state.track.addNotes(KeyStore.all());
     }
   },
 
-  componentDidMount: function(){
+  componentDidMount: function () {
     KeyStore.addChangeListener(this._keysChanged);
   },
 
-  render: function() {
+  render: function () {
     var recordingMessage = this.state.recording ? "stop recording" : "start recording";
     var hasTrack = this.state.track.blank(),
         playClass = "play-button" + hasTrack ? "" : " disabled",
         trackSavingElements = "";
 
-    if(!this.state.track.blank() && !this.state.recording){
+    if (!this.state.track.blank() && !this.state.recording) {
       recordingMessage = "record over";
       trackSavingElements = (
         <div onClick={this.saveTrack} className="control">
@@ -54,6 +54,7 @@ var Recorder = React.createClass({
         </div>
       );
     }
+
     return (
         <div className="controls">
           <h3>Recorder</h3>

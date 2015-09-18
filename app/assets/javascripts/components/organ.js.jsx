@@ -1,22 +1,22 @@
 var Organ = React.createClass({
-  componentDidMount: function(){
+  componentDidMount: function () {
     KeyStore.addChangeListener(this._onChange);
   },
 
-  getInitialState: function(){
+  getInitialState: function () {
     return {notes: KeyStore.all()};
   },
 
-  _onChange: function(){
+  _onChange: function () {
     this.setState({notes: KeyStore.all()});
   },
 
-  render: function() {
+  render: function () {
     return (
       <div>
         <div className="keys group">
         {
-          Object.keys(TONES).map(function(noteName){
+          Object.keys(TONES).map(function (noteName) {
             return ( <NoteKey noteName={noteName} key={noteName}/>);
           })
         }
