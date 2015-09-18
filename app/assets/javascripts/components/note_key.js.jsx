@@ -15,12 +15,12 @@ var NoteKey = React.createClass({
 
   _onChange: function () {
     var pressed = this.thisKeyPressed();
-    if(pressed){
+    if (pressed) {
       this.note.start();
     } else {
       this.note.stop();
     }
-    this.setState({pressed: pressed});
+    this.setState({ pressed: pressed });
   },
 
   render: function () {

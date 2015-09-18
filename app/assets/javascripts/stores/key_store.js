@@ -45,7 +45,7 @@
         root.KeyStore._removeKey(payload.note);
         break;
       case OrganConstants.GROUP_UPDATE:
-        root.KeyStore._groupUpdate(payload.note);
+        root.KeyStore._groupUpdate(payload.notes);
         break;
       }
     })

@@ -2,7 +2,7 @@ var KeyActions = {
   groupUpdate: function (notes) {
     AppDispatcher.dispatch({
       actionType: OrganConstants.GROUP_UPDATE,
-      note: notes
+      notes: notes
     });
   },
 
