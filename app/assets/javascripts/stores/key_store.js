@@ -48,6 +48,6 @@
           root.KeyStore._groupUpdate(payload.note);
           break;
       }
-    });
+    })
   });
 })(this);

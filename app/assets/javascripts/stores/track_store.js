@@ -36,6 +36,6 @@
         case OrganConstants.RESET_TRACKS:
           root.TrackStore._resetTracks(payload.tracks);
       }
-    });
+    })
   });
 })(this);
