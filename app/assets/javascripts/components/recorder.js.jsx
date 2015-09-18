@@ -1,37 +1,32 @@
 var Recorder = React.createClass({
+  componentDidMount: function () {
+    KeyStore.addChangeListener(this._keysChanged);
+  },
+
   getInitialState: function () {
     return { recording: false, track: new Track() };
   },
 
-  recordClick: function (e) {
-    if (this.state.recording) {
-      this.state.track.completeRecording();
-      this.setState({ recording: false });
-    } else {
-      this.setState({ recording: true });
-      this.state.track.startRecording();
-    }
+  isDoneRecording: function () {
+    return !this.isTrackNew() && !this.state.recording;
   },
 
-  saveTrack: function (e) {
-    this.state.track.set('name', prompt("please enter name"));
-    this.state.track.save();
+  isRecording: function () {
+    return this.state.recording;
+  },
+
+  isTrackNew: function () {
+    return this.state.track.blank();
+  },
+
+  playClass: function () {
+    return "play-button" + this.isTrackNew() ? "" : " disabled";
   },
 
   playClick: function (e) {
     if(!this.isTrackNew()){
       this.state.track.play();
     }
-  },
-
-  _keysChanged: function () {
-    if (this.state.recording){
-      this.state.track.addNotes(KeyStore.all());
-    }
-  },
-
-  componentDidMount: function () {
-    KeyStore.addChangeListener(this._keysChanged);
   },
 
   recordingMessage: function () {
@@ -44,29 +39,13 @@ var Recorder = React.createClass({
     }
   },
 
-  isRecording: function () {
-    return this.state.recording;
-  },
-
-  isDoneRecording: function () {
-    return !this.isTrackNew() && !this.state.recording;
-  },
-
-  isTrackNew: function () {
-    return this.state.track.blank();
-  },
-
-  playClass: function () {
-    return "play-button" + this.isTrackNew() ? "" : " disabled";
-  },
-
-  trackSavingElements: function () {
-    if (this.isDoneRecording()) {
-      return (
-        <div onClick={this.saveTrack} className="control">
-          save track
-        </div>
-      );
+  recordClick: function (e) {
+    if (this.state.recording) {
+      this.state.track.completeRecording();
+      this.setState({ recording: false });
+    } else {
+      this.setState({ recording: true });
+      this.state.track.startRecording();
     }
   },
 
@@ -85,5 +64,26 @@ var Recorder = React.createClass({
         </div>
       </div>
     );
+  },
+
+  saveTrack: function (e) {
+    this.state.track.set('name', prompt("please enter name"));
+    this.state.track.save();
+  },
+
+  trackSavingElements: function () {
+    if (this.isDoneRecording()) {
+      return (
+        <div onClick={this.saveTrack} className="control">
+          save track
+        </div>
+      );
+    }
+  },
+
+  _keysChanged: function () {
+    if (this.state.recording){
+      this.state.track.addNotes(KeyStore.all());
+    }
   }
 });

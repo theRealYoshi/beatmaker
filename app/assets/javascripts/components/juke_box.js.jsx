@@ -1,15 +1,11 @@
 var JukeBox = React.createClass({
-  getInitialState: function () {
-    return { tracks: TrackStore.all() };
-  },
-
-  _onChange: function () {
-    this.setState({ tracks: TrackStore.all() });
-  },
-
   componentDidMount: function () {
     TrackStore.addChangeListener(this._onChange);
     TrackApiUtil.fetchTracks();
+  },
+
+  getInitialState: function () {
+    return { tracks: TrackStore.all() };
   },
 
   render: function () {
@@ -23,5 +19,9 @@ var JukeBox = React.createClass({
         }
       </div>
     );
+  },
+
+  _onChange: function () {
+    this.setState({ tracks: TrackStore.all() });
   }
 });

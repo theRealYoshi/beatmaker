@@ -4,11 +4,7 @@ var Organ = React.createClass({
   },
 
   getInitialState: function () {
-    return {notes: KeyStore.all()};
-  },
-
-  _onChange: function () {
-    this.setState({notes: KeyStore.all()});
+    return { notes: KeyStore.all() };
   },
 
   render: function () {
@@ -25,5 +21,9 @@ var Organ = React.createClass({
         <JukeBox />
       </div>
    );
+  },
+
+  _onChange: function () {
+    this.setState({notes: KeyStore.all()});
   }
 });
