@@ -16,7 +16,7 @@ var Recorder = React.createClass({
   },
 
   isTrackNew: function () {
-    return this.state.track.blank();
+    return this.state.track.isBlank();
   },
 
   playClass: function () {
