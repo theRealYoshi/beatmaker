@@ -1,21 +1,23 @@
 class Api::TracksController < ApplicationController
   def index
-    render json: Track.all
+    @tracks = Track.all
+    render json: @tracks
   end
 
   def create
-    track = Track.new(track_params)
-    if track.save
-      render json: track
+    @track = Track.new(track_params)
+    if @track.save
+      render json: @track
     else
-      render json: "DIDN'T WORK", status: 422
+      render json: @track.errors.full_messages, status: :unprocessable_entity
     end
   end
 
   private
 
+  ROLL_FILTER = {:roll => [:time, :notes => []]}
+
   def track_params
-    roll_filter = {:roll => [:time, :notes => []]}
-    params.require(:track).permit(:name, roll_filter)
+    params.require(:track).permit(:name, ROLL_FILTER)
   end
 end
