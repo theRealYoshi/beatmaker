@@ -5,7 +5,7 @@ var NoteKey = React.createClass({
   },
 
   getInitialState: function () {
-    return {pressed: this.thisKeyPressed()};
+    return { pressed: this.thisKeyPressed() };
   },
 
   render: function () {

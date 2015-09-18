@@ -31,11 +31,11 @@ var Recorder = React.createClass({
 
   recordingMessage: function () {
     if (this.isRecording()) {
-      return "stop recording";
+      return "Stop Recording";
     } else if (this.isDoneRecording()) {
-      return "record over";
+      return "Done Recording";
     } else {
-      return "start recording";
+      return "Start Recording";
     }
   },
 
@@ -55,13 +55,13 @@ var Recorder = React.createClass({
     return (
       <div className="controls">
         <h3>Recorder</h3>
-        <div onClick={this.recordClick} className="record-button">
+        <button onClick={this.recordClick} className="record-button">
           { this.recordingMessage() }
-        </div>
+        </button>
         { this.trackSavingElements() }
-        <div onClick={this.playClick} className={this.playClass()}>
-          play
-        </div>
+        <button onClick={this.playClick} className={this.playClass()}>
+          Play
+        </button>
       </div>
     );
   },
@@ -74,9 +74,9 @@ var Recorder = React.createClass({
   trackSavingElements: function () {
     if (this.isDoneRecording()) {
       return (
-        <div onClick={this.saveTrack} className="control">
-          save track
-        </div>
+        <button onClick={this.saveTrack} className="control">
+          Save Track
+        </button>
       );
     }
   },
