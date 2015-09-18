@@ -3,6 +3,7 @@ function Track(attrs){
     name: "",
     roll: []
   };
+
   this.attributes = $.extend(defaults, attrs || {});
 }
 
@@ -15,20 +16,25 @@ Track.prototype = {
     }
     this.attributes.roll.push(timeSlice);
   },
+
   startRecording: function(){
     this.attributes.roll = [];
     this.start = Date.now();
   },
+
   _timeDelta: function(){
     return Date.now() - this.start;
   },
+
   completeRecording: function(){
     //add an empty time slice to indicate the end
     this.addNotes([]);
   },
+
   blank: function(){
     return this.attributes.roll.length === 0;
   },
+
   play: function(){
     var currentNote = 0,
         playBackStartTime = Date.now(),
@@ -56,12 +62,15 @@ Track.prototype = {
       }
     }, 1);
   },
+
   set: function(attr, val){
     this.attributes[attr] = val;
   },
+
   get: function(attr){
     return this.attributes[attr];
   },
+
   save: function(){
     if (this.blank()) {
       throw "track can't be blank!";

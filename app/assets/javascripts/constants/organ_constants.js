@@ -8,4 +8,3 @@ OrganConstants = {
   ADD_TRACK: "ADD_TRACK",
   RESET_TRACKS: "RESET_TRACKS"
 }
-

@@ -5,10 +5,11 @@ ControlActions = {
       note: noteName
     });
   },
+
   keyReleased: function(noteName){
     AppDispatcher.dispatch({
       actionType: OrganConstants.KEY_RELEASED,
       note: noteName
     });
-  },
+  }
 };

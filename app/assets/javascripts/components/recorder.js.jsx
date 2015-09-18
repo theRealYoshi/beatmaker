@@ -2,6 +2,7 @@ var Recorder = React.createClass({
   getInitialState: function(){
     return { recording: false, track: new Track() };
   },
+
   recordClick: function(e){
     if(this.state.recording){
       this.state.track.completeRecording();
@@ -11,6 +12,7 @@ var Recorder = React.createClass({
       this.state.track.startRecording();
     }
   },
+
   saveTrack: function(e){
     // try {
     this.state.track.set('name', prompt("please enter name"));
@@ -21,19 +23,23 @@ var Recorder = React.createClass({
     // if(!this.state.track.blank()){
     // }
   },
+
   playClick: function(e){
     if(!this.state.track.blank()){
       this.state.track.play();
     }
   },
+
   _keysChanged: function(){
     if (this.state.recording){
       this.state.track.addNotes(KeyStore.all());
     }
   },
+
   componentDidMount: function(){
     KeyStore.addChangeListener(this._keysChanged);
   },
+
   render: function() {
     var recordingMessage = this.state.recording ? "stop recording" : "start recording";
     var hasTrack = this.state.track.blank(),

@@ -3,13 +3,16 @@ var NoteKey = React.createClass({
     var keys = KeyStore.all();
     return keys.indexOf(this.props.noteName) !== -1;
   },
+
   getInitialState: function(){
     return {pressed: this.thisKeyPressed()};
   },
+
   componentDidMount: function(){
     this.note = new Note(TONES[this.props.noteName]);
     KeyStore.addChangeListener(this._onChange);
   },
+
   _onChange: function(){
     var pressed = this.thisKeyPressed();
     if(pressed){
@@ -19,6 +22,7 @@ var NoteKey = React.createClass({
     }
     this.setState({pressed: pressed});
   },
+
   render: function() {
     var className = "note-key";
     if(this.state.pressed){
