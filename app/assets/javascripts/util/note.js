@@ -21,7 +21,7 @@
     this.oscillatorNode = createOscillator(freq);
     this.gainNode = createGainNode();
     this.oscillatorNode.connect(this.gainNode);
-  }
+  };
 
   Note.prototype = {
     start: function () {
@@ -32,5 +32,5 @@
     stop: function () {
       this.gainNode.gain.value = 0;
     }
-  }
+  };
 })(this);

@@ -22,5 +22,5 @@
         TrackActions.resetTracks(tracks);
       });
     }
-  }
+  };
 })(this);

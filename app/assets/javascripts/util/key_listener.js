@@ -1,21 +1,24 @@
 $(function () {
-  var NOTE_MAP = {
-    65: 'C3',  // 'a'
-    83: 'D3',  // 's'
-    68: 'E3',  // 'd'
-    70: 'F3',  // 'f'
-    74: 'G3',  // 'j'
-    75: 'A3',  // 'k'
-    76: 'B3',  // 'l'
-    186: 'C4', // ';'
-  };
+  var NOTE_MAP = {}, tones = Object.keys(window.TONES);
+  var validKeys = [
+    65, // 'a'
+    83, // 's'
+    68, // 'd'
+    70, // 'f'
+    74, // 'j'
+    75, // 'k'
+    76, // 'l'
+    186 // ';'
+  ];
+  tones.forEach(function(tone, i) {
+    NOTE_MAP[validKeys[i]] = tone;
+  });
 
-  var _heldKeys = [],
-      validKeys = Object.keys(NOTE_MAP);
+  var _heldKeys = [];
 
   $(document).on('keydown', function (e) {
     var code = e.keyCode,
-        valid = validKeys.indexOf(code.toString()) !== -1;
+        valid = validKeys.indexOf(code) !== -1;
     if (_heldKeys.indexOf(code) === -1 && valid) {
       _heldKeys.push(code);
       KeyActions.keyPressed(NOTE_MAP[code]);
