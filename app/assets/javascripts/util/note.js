@@ -1,22 +1,6 @@
 (function (root) {
   var ctx = new (window.AudioContext || window.webkitAudioContext)();
 
-  var createOscillator = function (freq) {
-    var osc = ctx.createOscillator();
-    osc.type = "sine";
-    osc.frequency.value = freq;
-    osc.detune.value = 0;
-    osc.start(ctx.currentTime);
-    return osc;
-  };
-
-  var createGainNode = function () {
-    var gainNode = ctx.createGain();
-    gainNode.gain.value = 0;
-    gainNode.connect(ctx.destination);
-    return gainNode;
-  };
-
   var Note = root.Note = function (mp3) {
     this.mp3 = new Audio('/assets/' + mp3 + '.mp3');
   };

@@ -76,7 +76,7 @@ var Recorder = React.createClass({
   trackSavingElements: function () {
     if (this.isDoneRecording()) {
       return (
-        <button onClick={this.saveTrack} className="control">
+        <button onClick={this.saveTrack} className="btn btn-default btn-lg">
           Save Track
         </button>
       );
