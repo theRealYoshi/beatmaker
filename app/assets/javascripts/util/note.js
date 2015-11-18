@@ -17,20 +17,21 @@
     return gainNode;
   };
 
-  var Note = root.Note = function (freq) {
-    this.oscillatorNode = createOscillator(freq);
-    this.gainNode = createGainNode();
-    this.oscillatorNode.connect(this.gainNode);
+  var Note = root.Note = function (mp3) {
+    this.mp3 = new Audio('/assets/' + mp3 + '.mp3');
   };
 
   Note.prototype = {
     start: function () {
       // can't explain 0.3, it is a reasonable value
-      this.gainNode.gain.value = 0.3;
+      this.mp3.play();
+      this.mp3.loop = true;
     },
 
     stop: function () {
-      this.gainNode.gain.value = 0;
+      this.mp3.pause();
+      this.mp3.currentTime = 0;
+      // this.gainNode.gain.value = 0;
     }
   };
 })(this);

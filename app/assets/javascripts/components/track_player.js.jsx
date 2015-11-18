@@ -7,7 +7,10 @@ var TrackPlayer = React.createClass({
     return (
       <div className="track">
         <p className="track-name">{this.props.track.get('name')}</p>
-        <button onClick={this.playClick}>Play</button>
+        <button onClick={this.playClick} className="btn btn-default btn-sm">
+          Play
+        <span className="glyphicon glyphicon-play" aria-hidden="true"></span>
+        </button>
       </div>
     );
   }

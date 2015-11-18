@@ -20,7 +20,7 @@ var Recorder = React.createClass({
   },
 
   playClass: function () {
-    return "play-button" + this.isTrackNew() ? "" : " disabled";
+    return "play-button" + this.isTrackNew() ? "btn btn-default btn-lg" : " btn btn-default btn-lg disabled";
   },
 
   playClick: function (e) {
@@ -31,11 +31,11 @@ var Recorder = React.createClass({
 
   recordingMessage: function () {
     if (this.isRecording()) {
-      return "Stop Recording";
+      return "Stop Recording ";
     } else if (this.isDoneRecording()) {
-      return "Done Recording";
+      return "Done Recording ";
     } else {
-      return "Start Recording";
+      return "Start Recording ";
     }
   },
 
@@ -55,12 +55,14 @@ var Recorder = React.createClass({
     return (
       <div className="controls">
         <h3>Recorder</h3>
-        <button onClick={this.recordClick} className="record-button">
-          { this.recordingMessage() }
+        <button onClick={this.recordClick} className="record-button btn btn-default btn-lg">
+          {  this.recordingMessage() }
+          <span className="glyphicon glyphicon-record" aria-hidden="true"></span>
         </button>
         { this.trackSavingElements() }
         <button onClick={this.playClick} className={this.playClass()}>
           Play
+          <span className="glyphicon glyphicon-play" aria-hidden="true"></span>
         </button>
       </div>
     );
