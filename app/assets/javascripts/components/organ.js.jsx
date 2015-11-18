@@ -26,7 +26,10 @@ var Organ = React.createClass({
           </div>
         </div>
         <div className="col-md-2">
-
+          <div className="github-link-container">
+            <h3><a className="github" href="http://www.github.com/therealyoshi">Github</a></h3>
+            <h3><a className="github" href="https://www.linkedin.com/in/yoshihiroluk">Linkedin</a></h3>
+          </div>
         </div>
       </div>
    );

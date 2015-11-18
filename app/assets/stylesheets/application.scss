@@ -34,6 +34,9 @@ h1, h3 {
   margin-left: auto;
   margin-right: auto;
   width: 150px;
+  .btn-lg {
+    margin-top: 10px;
+  }
 }
 
 .play-button.disabled {
@@ -44,6 +47,15 @@ h1, h3 {
   margin-left: auto;
   margin-right: auto;
   width: 150px;
+  .btn-sm {
+    width: 150px;
+    max-width: 150px;
+    margin: 2px;
+
+    .glyphicon-play {
+      float: right;
+    }
+  }
 }
 
 .keys {
@@ -89,6 +101,18 @@ h1, h3 {
   }
 
 }
+
+.github-link-container {
+  height: 645px;
+  position: relative;
+  .github {
+    font-size: 20px;
+    color: #515151;
+    float: left;
+    margin: 5px;
+  }
+}
+
 .clearfix:after {
   visibility: hidden;
   display: block;
