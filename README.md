@@ -2,7 +2,7 @@
 
 [Beatmaker][Beatmaker] - Create and record house beats and rhythms
 
-[Beatmaker]: https://www.housebeatmaker.co/
+[Beatmaker]: http://www.housebeatmaker.co/
 
 ## Key Features
 
@@ -11,6 +11,7 @@
     should be played or stopped
     - Play your beats:
       - ![play_beat]
+      - ![image_search]
 - Record a track
   - A timeroll is initiated once the "Record" button is pressed. If any keypress
     events occur, the note associated with the keypress event and the timeslice
@@ -49,10 +50,10 @@
         }
       }.bind(this), 1);
   ```
+[image_search]: https://cloud.githubusercontent.com/assets/1275250/10827123/725f757e-7e2a-11e5-8309-cb16072398b4.gif
+[play_beat]: https://cloud.githubusercontent.com/assets/1275250/11281655/5263443a-8eb0-11e5-89d3-dfa1ade0e2c5.gif
+[record_beat]: https://cloud.githubusercontent.com/assets/1275250/11281978/e225bc5a-8eb1-11e5-9b84-76269d27a3c1.gif
 
 ## Future implementations
 
  - [ ] Upload your own beats
-
-[play_beat]: https://cloud.githubusercontent.com/assets/1275250/11281655/5263443a-8eb0-11e5-89d3-dfa1ade0e2c5.gif
-[record_beat]: https://cloud.githubusercontent.com/assets/1275250/11281978/e225bc5a-8eb1-11e5-9b84-76269d27a3c1.gif
