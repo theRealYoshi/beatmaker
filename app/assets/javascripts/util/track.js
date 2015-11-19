@@ -11,7 +11,6 @@ Track.prototype = {
   addNotes: function (notes) {
     var timeSlice = { time: this._timeDelta() };
     if (notes.length > 0) {
-      //there are actually some keys held down
       timeSlice.notes = notes;
     }
     this.attributes.roll.push(timeSlice);
@@ -45,7 +44,6 @@ Track.prototype = {
 
         // if we are at a timeslice with a note, play it and move forward
         if (delta >= roll[currentNote].time) {
-          // memoize because the notes might not be set; thanks Rails!
           var notes = roll[currentNote].notes || [];
           KeyActions.groupUpdate(notes);
           currentNote++;
