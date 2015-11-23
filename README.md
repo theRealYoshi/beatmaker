@@ -49,7 +49,6 @@
         }
       }.bind(this), 1);
   ```
-
 ## Future implementations
 
  - [ ] Upload your own beats
